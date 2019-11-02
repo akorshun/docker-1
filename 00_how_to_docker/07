@@ -1,0 +1,5 @@
+#know container id via
+#ps aus
+#or just by name
+#-f to get format of container info
+docker inspect -f '{{.NetworkSettings.IPAddress}}' overlord

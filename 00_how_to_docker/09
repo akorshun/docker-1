@@ -1,0 +1,5 @@
+#docker pull debian
+#docker run -it --rm debian
+apt-get update
+apt-get upgrade
+apt-get install git gcc make
