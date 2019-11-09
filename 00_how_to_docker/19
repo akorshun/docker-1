@@ -1,0 +1,1 @@
+docker run -d -it -p 3000:3000 -v /Users/bsatou:/root --name Abathur python:2-slim
