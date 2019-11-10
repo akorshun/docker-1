@@ -1,4 +1,5 @@
 docker run -d -it -p 3000:3000 -v /Users/bsatou:/root --name Abathur python:2-slim
 curl https://raw.githubusercontent.com/akorshun/docker-1/master/flask_hello_world > ~/app.py
+docker exec Abathur pip install flask
 docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
 #curl $(docker-machine ip Char):3000
