@@ -13,13 +13,9 @@ RUN apt update && \
     mkdir -p /etc/gitlab/ssl && \
     chmod 700 /etc/gitlab/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/gitlab/ssl/gitlab.bsatou.com.key -out /etc/gitlab/ssl/gitlab.bsatou.com.crt -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=gitlab.bsatou.com" && \
-    chmod 600 /etc/gitlab/ssl/gitlab.bsatou.com.* && \
-    echo "external_url "https://gitlab.bsatou.com"" >> /etc/gitlab/gitlab.rb && \
-    echo "nginx['redirect_http_to_https'] = true" >> /etc/gitlab/gitlab.rb && \
-    echo "letsencrypt['enable'] = false" >> /etc/gitlab/gitlab.rb && \
-    echo "nginx['ssl_certificate'] = \"/etc/gitlab/ssl/gitlab.bsatou.com.crt\"" >> /etc/gitlab/gitlab.rb && \
-    echo "nginx['ssl_certificate_key'] = \"/etc/gitlab/ssl/gitlab.bsatou.com.key\"" >> /etc/gitlab/gitlab.rb && \
-    echo "gitlab_rails['gitlab_shell_ssh_port'] = 8022" >> /etc/gitlab/gitlab.rb
+    chmod 600 /etc/gitlab/ssl/gitlab.bsatou.com.*
+
+COPY gitlab.rb /etc/gitlab/gitlab.rb
 
 CMD service ssh start && (/opt/gitlab/embedded/bin/runsvdir-start &) && gitlab-ctl reconfigure && gitlab-ctl tail
 
