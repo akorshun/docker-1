@@ -1,1 +1,1 @@
-docker build --tag python_bonus .
+docker build --tag site_bonus .

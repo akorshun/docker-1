@@ -1,9 +1,5 @@
-FROM debian
+FROM php:7.3.4-apache
 
 LABEL maintainer="bsatou@student.21-school.ru"
 
-RUN apt-get update && \
-	apt-get upgrade -y && \
-	apt-get install -y python3.6 vim git
-
-CMD bash
+COPY . /var/www/html
